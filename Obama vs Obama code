@@ -1,0 +1,16 @@
+import face_recognition
+
+image_of_obama = face_recognition.load_image_file('./desktop/known/barrack.jpg')
+obama_face_encoding = face_recognition.face_encodings(image_of_obama)[0]
+
+unknown_image = face_recognition.load_image_file('./desktop/unknown/obama4.jpg')
+unknown_face_encoding = face_recognition.face_encodings(unknown_image)[0]
+
+
+results = face_recognition.compare_faces([obama_face_encoding], unknown_face_encoding)
+
+if results[0]:
+    print('This is Barrack Obama')
+else:
+    print('This is Not Barrack Obama')
+    
